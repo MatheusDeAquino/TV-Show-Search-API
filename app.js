@@ -1,6 +1,18 @@
 const form = document.querySelector('#searchForm');
 
-form.addEventListener('submit', function(e){
+form.addEventListener('submit', async function(e){
     e.preventDefault();
-    console.log('SUBMITED!');
+    const searchTerm = form.elements.query.value;
+    const response = await axios.get(`http://api.tvmaze.com/search/shows?q=${searchTerm}`);
+    makeImage(response.data);
 })
+
+const makeImage = (shows) =>{
+    for(let result of shows){
+        if(result.show.image){
+            const img = document.createElement('IMG');
+            img.src = result.show.image.medium;
+            document.body.append(img);
+        }
+    }
+}
