@@ -1,0 +1,14 @@
+* {
+  margin: 0;
+}
+
+body {
+  background-color: cadetblue;
+}
+
+.container {
+  display: flexbox;
+  text-align: center;
+  margin-top: 20%;
+  background-color: aquamarine;
+}
